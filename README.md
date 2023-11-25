@@ -19,6 +19,7 @@ Bring some color to your GNOME desktop by syncing your desktop and lockscreen wa
 
 ## TODO
 
+* Scale image so it fits nicely on the screen
 * Remove all requests to bing
 * Update metadata.json
 
