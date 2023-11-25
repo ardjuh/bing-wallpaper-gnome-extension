@@ -1,18 +1,13 @@
-# GNOME Shell extension - Bing Wallpaper
+# Fork
+This is a fork from [Bing wallpaper of the day](https://github.com/neffo/bing-wallpaper-gnome-extension). This fork probably won't be updated frequently and as of now has the wrong metadata.
 
-Bring some color to your GNOME desktop by syncing your desktop and lockscreen wallpapers with today's Microsoft Bing image of the day (the image you see when you visit Bing.com) with this extension. The intention of this extension is to just do what it needs to do and stay out of your way, with a few optional features to improve quality-of-life.
+# GNOME Shell extension - Youversion votd image
 
-[![Get it on GNOME extensions](/screenshot/get_it_on_gnome_extensions.png)](https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/) [![<3 Sponsor this project on GitHub <3](/screenshot/sponsor.png)](https://github.com/sponsors/neffo)
-
-![Screenshot](/screenshot/notification.png)
-
-As featured on [OMG! Ubuntu](https://www.omgubuntu.co.uk/2017/07/bing-wallpaper-changer-gnome-extension). 
-
-Also, check out my related [Google Earth View wallpaper extension](https://github.com/neffo/earth-view-wallpaper-gnome-extension) and the partially-derived [Bing Desktop Wallpaper for Cinnamon](https://cinnamon-spices.linuxmint.com/applets/view/320) applet by Starcross.
+Bring some color to your GNOME desktop by syncing your desktop and lockscreen wallpapers with today's Youversion's verse of the day image with this extension. The intention of this extension is to just do what it needs to do and stay out of your way, with a few optional features to improve quality-of-life.
 
 ## Features
 
-* Automatically sets the Bing [Image of the Day](https://www.microsoft.com/en-us/bing/bing-wallpaper) as both lock screen and desktop wallpapers
+* Automatically sets the Youversion [Verse of the Day image](https://www.bible.com/verse-of-the-day) as both lock screen and desktop wallpapers
 * Only attempts to download wallpapers when they have been updated - doesn't poll continuously
 * Shuffle/randomise wallpapers at adjustable intervals (including from your stored Bing images)
 * Image gallery to view, select and curate stored images
@@ -24,14 +19,8 @@ Also, check out my related [Google Earth View wallpaper extension](https://githu
 
 ## TODO
 
-* add more languages (#14) - [please help if you can](https://github.com/neffo/bing-wallpaper-gnome-extension/issues/14)
-* add user features requests - [lots have already been implemented](https://github.com/neffo/bing-wallpaper-gnome-extension/issues?q=is%3Aissue+label%3Aenhancement+is%3Aclosed)
-
-## Known Issues
-
-* In China, users are limited to 'Chinese – China', 'English - International' markets (this is the way Bing handles the Chinese market/locale, not an extension 'bug' - sorry!)
-* Bing may detect your location incorrectly (and force a locale as above) - if you see this, please let me know what Bing.com itself does
-* GNOME Shell themes can break some GNOME popup menu elements (toggle switches for example). This impacts GNOME more generally, not just this extension. Double check you are running latest versions of your themes (or disable them).
+* Remove all requests to bing
+* Update metadata.json
 
 ## Requirements
 
@@ -39,14 +28,12 @@ GNOME 3.36+ or 40+ (Ubuntu 20.04 LTS or later, older versions of the extension w
 
 ## Install
 
-[Install from extensions.gnome.org](https://extensions.gnome.org/extension/1262/bing-wallpaper-changer/)
-
-or install directly to your GNOME extensions directory (useful if you want to hack on it)
+install directly to your GNOME extensions directory (useful if you want to hack on it)
 
 ```
 mkdir ~/Desktop/source
 cd ~/Desktop/source
-git clone https://github.com/neffo/bing-wallpaper-gnome-extension.git
+git clone git@github.com:ardjuh/bing-wallpaper-gnome-extension.git
 cd bing-wallpaper-gnome-extension
 sh install.sh
 ```
@@ -83,7 +70,7 @@ From left to right:
 
 ## Toss a coin to your coder
 
-Do you like this extension and want to show that you appreciate the work that goes into adding new features and keeping it maintained? Please consider buying me a coffee on [GitHub Sponsors](https://github.com/sponsors/neffo) or on [Flattr](https://flattr.com/@neffo).
+Do you like this extension and want to show that you appreciate the work that goes into adding new features and keeping it maintained? Please consider buying me a coffee on [GitHub Sponsors](https://github.com/sponsors/neffo) or on [Flattr](https://flattr.com/@neffo). This is for the original creater neffo, not me.
 
 ## Disclaimer
 
