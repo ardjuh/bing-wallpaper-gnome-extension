@@ -35,6 +35,7 @@ const MINIMUM_SHUFFLE_IMAGES = 3; // bare minimum to use filtered image set in s
 const ICON_PREVIOUS_BUTTON = 'media-seek-backward-symbolic';
 const ICON_NEXT_BUTTON = 'media-seek-forward-symbolic';
 const ICON_CURRENT_BUTTON = 'media-skip-forward-symbolic';
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December`"]
 
 let bingWallpaperIndicator = null;
 let blur = null;
