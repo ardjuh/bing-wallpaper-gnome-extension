@@ -28,7 +28,6 @@ import Thumbnail from './thumbnail.js';
 import BWClipboard from './BWClipboard.js';
 
 const BingImageURL = Utils.BingImageURL;
-const BingURL = 'https://www.bing.com';
 const IndicatorName = 'BingWallpaperIndicator';
 const TIMEOUT_SECONDS = 24 * 3600; // FIXME: this should use the end data from the json data
 const TIMEOUT_SECONDS_ON_HTTP_ERROR = 1 * 3600; // retry in one hour if there is a http error3
@@ -752,8 +751,6 @@ class BingWallpaperIndicator extends Button {
                 log('WARNING: Bing returning market data for ' + datamarket + ' rather than selected ' + prefmarket);
             
             Utils.purgeImages(this._settings); // delete older images if enabled
-            //Utils.cleanupImageList(this._settings); // disabled, as old images should still be downloadble in theory
-            this._downloadAllImages(); // fetch missing images that are still available
             Utils.populateImageListResolutions(this._settings);
             
             if (newImages.length > 0 && this._settings.get_boolean('revert-to-current-image')) {
@@ -870,13 +867,18 @@ class BingWallpaperIndicator extends Button {
             let resolution = Utils.getResolution(this._settings, image);
             let BingWallpaperDir = Utils.getWallpaperDir(this._settings);
 
+            let date = Utils.dateFromLongDate(image.startdate, 300); // date at update
+            let year = date.get_year();
+            let month = months[date.get_month() - 1];
+            let day = date.get_day_of_month();
+
             // set current image details at extension scope
             this.title = image.copyright.replace(/\s*[\(\（].*?[\)\）]\s*/g, '');
             this.explanation = _('Bing Wallpaper of the Day for') + ' ' + this._localeDate(image.startdate);
             this.copyright = image.copyright.match(/[\(\（]([^)]+)[\)\）]/)[1].replace('\*\*', ''); // Japan locale uses （） rather than ()
             this.longstartdate = image.fullstartdate;
             this.imageinfolink = image.copyrightlink.replace(/^http:\/\//i, 'https://');
-            this.imageURL = BingURL + image.urlbase + '_' + resolution + '.jpg'+'&qlt=100'; // generate image url for user's resolution @ high quality
+            this.imageURL = `https://d347bo4ltvvnaz.cloudfront.net/images/preview/YV_VOTD${year}_${month}${day}_Square.jpg`;
             this.filename = Utils.toFilename(BingWallpaperDir, image.startdate, image.urlbase, resolution);
             this.dimensions.width = image.width?image.width:null;
             this.dimensions.height = image.height?image.height:null;
@@ -918,10 +920,6 @@ class BingWallpaperIndicator extends Button {
 
         this._setMenuText();
         this._storeState();
-    }
-
-    _imageURL(urlbase, resolution) {
-        return BingURL + urlbase + '_' + resolution + '.jpg';
     }
 
     _storeState() {
@@ -986,19 +984,6 @@ class BingWallpaperIndicator extends Button {
             log('bad state - refreshing... error was ' + error);
         }
         this._restartTimeout(60);
-    }
-
-    _downloadAllImages() {
-        // fetch recent undownloaded images       
-        let imageList = Utils.getFetchableImageList(this._settings);
-        let BingWallpaperDir = Utils.getWallpaperDir(this._settings);
-        imageList.forEach( (image) => {
-            let resolution = Utils.getResolution(this._settings, image);
-            let filename = Utils.toFilename(BingWallpaperDir, image.startdate, image.urlbase, resolution);
-            let url = this._imageURL(image.urlbase, resolution);
-            let file = Gio.file_new_for_path(filename);
-            this._downloadImage(url, file, false);
-        });
     }
 
     // download and process new image
